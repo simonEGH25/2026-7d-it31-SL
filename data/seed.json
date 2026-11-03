@@ -1,11 +1,11 @@
 [
-  { "id": 1, "title": "Git-Repository anlegen", "category": "Setup", "note": "Aus dem Template erstellt und in VS Code geklont.", "done": true, "createdAt": "2026-10-19T08:00:00.000Z" },
-  { "id": 2, "title": "API testen", "category": "Backend", "note": "GET /api/items im Browser öffnen.", "done": false, "createdAt": "2026-10-19T08:05:00.000Z" },
-  { "id": 3, "title": "Oberfläche gestalten", "category": "Frontend", "note": "Eigene Farben in style.css festlegen.", "done": false, "createdAt": "2026-10-19T08:10:00.000Z" },
-  { "id": 4, "title": "Daten dauerhaft speichern", "category": "Datenbank", "note": "SQLite statt Arbeitsspeicher.", "done": false, "createdAt": "2026-10-19T08:15:00.000Z" },
-  { "id": 5, "title": "Als Container starten", "category": "Deployment", "note": "docker compose up", "done": false, "createdAt": "2026-10-19T08:20:00.000Z" },
-  { "id": 6, "title": "Per iframe einbetten", "category": "Deployment", "note": "Statischer Build in eine HTML-Seite einbinden.", "done": false, "createdAt": "2026-10-19T08:25:00.000Z" },
-  { "id": 7, "title": "Für den Mathetest lernen", "category": "Schule", "note": "Übungsaufgaben zu Gleichungen wiederholen.", "done": false, "createdAt": "2026-10-19T08:30:00.000Z" },
-  { "id": 8, "title": "Referat vorbereiten", "category": "Schule", "note": "Thema recherchieren und Folien erstellen.", "done": false, "createdAt": "2026-10-19T08:35:00.000Z" },
-  { "id": 9, "title": "Hausübung erledigen", "category": "Schule", "note": "Aufgaben für morgen bearbeiten.", "done": false, "createdAt": "2026-10-19T08:40:00.000Z" }
+  { "id": 1, "title": "Kuchen", "category": "Backen", "note": "Aus dem Template erstellt und in VS Code geklont.", "done": true, "createdAt": "2026-10-19T08:00:00.000Z" },
+  { "id": 2, "title": "API Sport", "category": "Dinge", "note": "GET /api/items im Browser öffnen.", "done": false, "createdAt": "2026-10-19T08:05:00.000Z" },
+  { "id": 3, "title": "Hallo", "category": "Welt", "note": "Eigene Farben in style.css festlegen.", "done": false, "createdAt": "2026-10-19T08:10:00.000Z" },
+  { "id": 4, "title": "Chemieexperiment durchführen", "category": "Chemie", "note": "Versuch vorbereiten und Beobachtungen notieren.", "done": false, "createdAt": "2026-10-19T08:15:00.000Z" },
+  { "id": 5, "title": "Englischvokabeln lernen", "category": "Englisch", "note": "Die neuen Wörter aus Kapitel drei wiederholen.", "done": false, "createdAt": "2026-10-19T08:20:00.000Z" },
+  { "id": 6, "title": "Sportzeug einpacken", "category": "Sport", "note": "Turnschuhe und Sportkleidung für morgen vorbereiten.", "done": false, "createdAt": "2026-10-19T08:25:00.000Z" },
+  { "id": 7, "title": "Geschichtsprojekt recherchieren", "category": "Geschichte", "note": "Informationen zum Thema im Schulbuch sammeln.", "done": false, "createdAt": "2026-10-19T08:30:00.000Z" },
+  { "id": 8, "title": "Kunstmappe fertigstellen", "category": "Kunst", "note": "Zeichnungen ordnen und die Mappe abgeben.", "done": false, "createdAt": "2026-10-19T08:35:00.000Z" },
+  { "id": 9, "title": "Schultasche packen", "category": "Organisation", "note": "Stundenplan prüfen und benötigte Bücher einpacken.", "done": false, "createdAt": "2026-10-19T08:40:00.000Z" }
 ]

@@ -18,8 +18,8 @@ export function App() {
 
   return (
     <main class="mx-auto max-w-2xl p-6">
-      <h1 class="text-3xl font-bold text-brand">Meine Fullstack-App</h1>
-      <p class="mb-6 text-slate-600">Ändere Titel und Thema in src/client/App.tsx.</p>
+      <h1 class="text-3xl font-bold text-brand">Schule</h1>
+      <p class="mb-6 text-slate-600">Ich bin in der Schule/client/App.tsx.</p>
 
       {error && <p class="mb-4 rounded bg-red-100 p-3 text-red-800">{error}</p>}
 

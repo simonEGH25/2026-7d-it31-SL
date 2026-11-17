@@ -10,16 +10,55 @@ export function createApp(store: Store) {
 
   app.get('/api/items', async (c) => c.json(await store.list()))
 
-  // TODO Aufgabe 2: POST /api/items   -> Eintrag anlegen (Zod-Validierung, Status 201)
-  // TODO Aufgabe 2: PATCH /api/items/:id  -> Eintrag ändern
-  // TODO Aufgabe 2: DELETE /api/items/:id -> Eintrag löschen
-  // Fertige Lösung zum Vergleichen: snippets/02-routes.ts
-  app.post('/api/items', (c) => c.json({ error: 'Noch nicht implementiert' }, 501))
-  app.patch('/api/items/:id', (c) => c.json({ error: 'Noch nicht implementiert' }, 501))
-  app.delete('/api/items/:id', (c) => c.json({ error: 'Noch nicht implementiert' }, 501))
+  app.post('/api/items', async (c) => {
+    let body: unknown
+    try {
+      body = await c.req.json()
+    } catch {
+      return c.json({ error: 'Ungültiges JSON' }, 400)
+    }
 
-  void itemInput
-  void itemPatch
+    const result = itemInput.safeParse(body)
+    if (!result.success) {
+      return c.json({ error: 'Ungültige Eingabe', details: result.error.issues }, 400)
+    }
+
+    return c.json(await store.create(result.data), 201)
+  })
+
+  app.patch('/api/items/:id', async (c) => {
+    const id = Number(c.req.param('id'))
+    if (!Number.isSafeInteger(id) || id < 1) {
+      return c.json({ error: 'Ungültige ID' }, 400)
+    }
+
+    let body: unknown
+    try {
+      body = await c.req.json()
+    } catch {
+      return c.json({ error: 'Ungültiges JSON' }, 400)
+    }
+
+    const result = itemPatch.safeParse(body)
+    if (!result.success) {
+      return c.json({ error: 'Ungültige Eingabe', details: result.error.issues }, 400)
+    }
+
+    const item = await store.update(id, result.data)
+    if (!item) return c.json({ error: 'Eintrag nicht gefunden' }, 404)
+    return c.json(item)
+  })
+
+  app.delete('/api/items/:id', async (c) => {
+    const id = Number(c.req.param('id'))
+    if (!Number.isSafeInteger(id) || id < 1) {
+      return c.json({ error: 'Ungültige ID' }, 400)
+    }
+
+    const removed = await store.remove(id)
+    if (!removed) return c.json({ error: 'Eintrag nicht gefunden' }, 404)
+    return c.body(null, 204)
+  })
 
   return app
 }

@@ -22,6 +22,63 @@ describe('API', () => {
     expect(body).toHaveLength(1)
   })
 
-  // TODO Aufgabe 5: Schreibe Tests für POST (201 + 400 bei leerem Titel), PATCH und DELETE.
-  // Vorlage: snippets/05-api.test.ts
+  it('POST /api/items legt einen gültigen Eintrag an', async () => {
+    const res = await app().request('/api/items', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ title: 'Neuer Eintrag' }),
+    })
+
+    expect(res.status).toBe(201)
+    await expect(res.json()).resolves.toMatchObject({
+      title: 'Neuer Eintrag',
+      category: 'Allgemein',
+      note: '',
+      done: false,
+    })
+  })
+
+  it('POST /api/items lehnt ungültige Eingaben ab', async () => {
+    const res = await app().request('/api/items', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ title: ' ' }),
+    })
+
+    expect(res.status).toBe(400)
+  })
+
+  it('PATCH /api/items/:id aktualisiert einen Eintrag', async () => {
+    const res = await app().request('/api/items/1', {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ done: true }),
+    })
+
+    expect(res.status).toBe(200)
+    await expect(res.json()).resolves.toMatchObject({ id: 1, done: true })
+  })
+
+  it('PATCH /api/items/:id liefert 404 für unbekannte Einträge', async () => {
+    const res = await app().request('/api/items/2', {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ done: true }),
+    })
+
+    expect(res.status).toBe(404)
+  })
+
+  it('DELETE /api/items/:id löscht einen Eintrag mit Status 204', async () => {
+    const res = await app().request('/api/items/1', { method: 'DELETE' })
+
+    expect(res.status).toBe(204)
+    expect(await res.text()).toBe('')
+  })
+
+  it('DELETE /api/items/:id liefert 404 für unbekannte Einträge', async () => {
+    const res = await app().request('/api/items/2', { method: 'DELETE' })
+
+    expect(res.status).toBe(404)
+  })
 })
